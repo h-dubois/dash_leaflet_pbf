@@ -1,0 +1,272 @@
+{
+  "src/ts/components/DashLeafletPbf.tsx": {
+    "displayName": "DashLeafletPbf",
+    "description": "Used to load and display tile layers on the map. Note that most tile servers require attribution.",
+    "props": {
+      "minZoom": {
+        "description": "The minimum zoom level down to which this layer will be displayed (inclusive).",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "maxZoom": {
+        "description": "The maximum zoom level up to which this layer will be displayed (inclusive).",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "subdomains": {
+        "description": "Subdomains of the tile service. Can be passed in the form of one string (where each letter is a subdomain name) or an array of strings.",
+        "required": false,
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string",
+              "raw": "string"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "string",
+                "raw": "string"
+              },
+              "raw": "string[]"
+            }
+          ],
+          "raw": "string | string[]"
+        }
+      },
+      "errorTileUrl": {
+        "description": "URL to the tile image to show in place of the tile that failed to load.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "zoomOffset": {
+        "description": "The zoom number used in tile URLs will be offset with this value.",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "tms": {
+        "description": "If true, inverses Y axis numbering for tiles (turn this on for TMS services).",
+        "required": false,
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "zoomReverse": {
+        "description": "If set to true, the zoom number used in tile URLs will be reversed (maxZoom - zoom instead of zoom).",
+        "required": false,
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "detectRetina": {
+        "description": "If true and user is on a retina display, it will request four tiles of half the specified size and a bigger zoom level in place of one to utilize the high resolution.",
+        "required": false,
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "crossOrigin": {
+        "description": "Whether the crossOrigin attribute will be added to the tiles. If a String is provided, all tiles will have their crossOrigin attribute set to the String provided. This is needed if you want to access tile pixel data. Refer to CORS Settings for valid String values.",
+        "required": false,
+        "type": {
+          "name": "any",
+          "raw": "any"
+        }
+      },
+      "referrerPolicy": {
+        "description": "Whether the referrerPolicy attribute will be added to the tiles. If a String is provided, all tiles will have their referrerPolicy attribute set to the String provided. This may be needed if your map's rendering context has a strict default but your tile provider expects a valid referrer (e.g. to validate an API token). Refer to HTMLImageElement.referrerPolicy for valid String values.",
+        "required": false,
+        "type": {
+          "name": "any",
+          "raw": "any"
+        }
+      },
+      "tileSize": {
+        "description": "Width and height of tiles in the grid. Use a number if width and height are equal, or L.point(width, height) otherwise.",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "opacity": {
+        "description": "The layer opacity. [MUTABLE]",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "updateWhenIdle": {
+        "description": "Load new tiles only when panning ends. true by default on mobile browsers, in order to avoid too many requests and keep smooth navigation. false otherwise in order to display new tiles during panning, since it is easy to pan outside the keepBuffer option in desktop browsers.",
+        "required": false,
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "updateWhenZooming": {
+        "description": "By default, a smooth zoom animation (during a touch zoom or a flyTo()) will update grid layers every integer zoom level. Setting this option to false will update the grid layer only when the smooth animation ends.",
+        "required": false,
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "updateInterval": {
+        "description": "Tiles will not update more than once every updateInterval milliseconds when panning.",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "zIndex": {
+        "description": "The layer zIndex. [MUTABLE]",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "bounds": {
+        "description": "If set, tiles will only be loaded inside the set LatLngBounds.",
+        "required": false,
+        "type": {
+          "name": "shape",
+          "value": {},
+          "raw": "L.LatLngBounds"
+        }
+      },
+      "maxNativeZoom": {
+        "description": "Maximum zoom number the tile source has available. If it is specified, the tiles on all zoom levels higher than maxNativeZoom will be loaded from maxNativeZoom level and auto-scaled.",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "minNativeZoom": {
+        "description": "Minimum zoom number the tile source has available. If it is specified, the tiles on all zoom levels lower than minNativeZoom will be loaded from minNativeZoom level and auto-scaled.",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "noWrap": {
+        "description": "Whether the layer is wrapped around the antimeridian. If true, the GridLayer will only be displayed once at low zoom levels. Has no effect when the map CRS doesn't wrap around. Can be used in combination with bounds to prevent requesting tiles outside the CRS limits.",
+        "required": false,
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "pane": {
+        "description": "Map pane where the layer will be added.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "className": {
+        "description": "A custom class name to assign to the tile layer. Empty by default.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "keepBuffer": {
+        "description": "When panning the map, keep this many rows and columns of tiles before unloading them.",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "attribution": {
+        "description": "String to be shown in the attribution control, e.g. \"\u00a9 OpenStreetMap contributors\". It describes the layer data and is often a legal obligation towards copyright holders and tile providers.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "url": {
+        "description": "The URL template in the form 'https://{s}.somedomain.com/blabla/{z}/{x}/{y}{r}'. [MUTABLE, DL]",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "setProps": {
+        "description": "Function handle that enables triggering Dash callbacks on prop update.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
+        }
+      },
+      "loading_state": {
+        "description": "Dash loading state information.",
+        "required": false,
+        "type": {
+          "name": "object",
+          "raw": "object"
+        }
+      },
+      "eventHandlers": {
+        "description": "Object with keys specifying the event type and the value the corresponding event handlers. [MUTABLE]",
+        "required": false,
+        "type": {
+          "name": "object",
+          "raw": "object"
+        }
+      },
+      "disableDefaultEventHandlers": {
+        "description": "If set to true, default events handlers are not registered. [MUTABLE]",
+        "required": false,
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "n_loads": {
+        "description": "An integer that represents the number of times that the load event has fired.",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      }
+    },
+    "isContext": false
+  }
+}

@@ -1,0 +1,2 @@
+recursive-include dash_leaflet_pbf/** *.js *.css *.json *.html
+prune tests
